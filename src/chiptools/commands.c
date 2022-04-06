@@ -26,8 +26,8 @@ bool dump_config(struct atsha_handle *handle)
 {
 	atsha_big_int data;
 
-	printf("Config zone (0x00 - 0x15):\n");
-	for (unsigned char addr = 0x00; addr <= 0x15; addr++) {
+	printf("Config zone (0x00 - 0x1F):\n");
+	for (unsigned char addr = 0x00; addr <= 0x1F; addr++) {
 		printf("0x%02X: ", addr);
 		if (atsha_raw_conf_read(handle, addr, &data) == ATSHA_ERR_OK) {
 			for (size_t i = 0; i < data.bytes; i++) {

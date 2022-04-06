@@ -46,7 +46,8 @@
 #endif
 
 #ifndef DEFAULT_NI2C_ADDRESS
-#define DEFAULT_NI2C_ADDRESS 0x64
+//#define DEFAULT_NI2C_ADDRESS 0x64
+#define DEFAULT_NI2C_ADDRESS 0x58
 #endif
 
 #define DEFAULT_USE_SN_IN_DIGEST true

@@ -746,6 +746,7 @@ int atsha_raw_conf_write(struct atsha_handle *handle, unsigned char address, ats
 
 	status = command(handle, packet, &answer);
 	if (status != ATSHA_ERR_OK) {
+	printf("COOL\n");
 		free(packet);
 		free(answer);
 		return status;

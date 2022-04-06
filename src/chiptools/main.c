@@ -227,7 +227,7 @@ int main(int argc, char **argv) {
 	}
 
 	cleanup.handle = handle;
-	on_exit(cleanup_on_exit, &cleanup);
+	//on_exit(cleanup_on_exit, &cleanup);
 
 	// Process command
 	atsha_big_int abi;

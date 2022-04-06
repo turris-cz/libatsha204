@@ -73,10 +73,12 @@ static bool set_otp_mode(struct atsha_handle *handle, unsigned char *config) {
 	atsha_big_int record;
 
 	if (atsha_raw_conf_read(handle, 0x04, &record) != ATSHA_ERR_OK) return false;
+	printf("OTPMode: %x\n", record.data[2]);
 	record.data[2] = ATSHA204_CONFIG_OTPMODE_READONLY;
 	if (atsha_raw_conf_write(handle, 0x04, record) != ATSHA_ERR_OK) return false;
 
 	config[0x04*BYTESIZE_CNF+2] = ATSHA204_CONFIG_OTPMODE_READONLY;
+	exit(42);
 
 	return true;
 
@@ -119,7 +121,7 @@ static bool create_and_lock_config(struct atsha_handle *handle) {
 	if (!set_slot_config(handle, config)) return false;
 
 	calculate_crc(CONFIG_CNT*BYTESIZE_CNF, config, crc);
-	if (atsha_lock_config(handle, crc) != ATSHA_ERR_OK) return false;
+	//if (atsha_lock_config(handle, crc) != ATSHA_ERR_OK) return false;
 
 	return true;
 }
@@ -151,7 +153,7 @@ static bool write_and_lock_data(struct atsha_handle *handle, unsigned char *data
 	memcpy((both+(SLOT_CNT*BYTESIZE_KEY)), otp, (SLOT_CNT*BYTESIZE_OTP));
 
 	calculate_crc((SLOT_CNT*BYTESIZE_KEY)+(SLOT_CNT*BYTESIZE_OTP), both, crc);
-	if (atsha_lock_data(handle, crc) != ATSHA_ERR_OK) return false;
+	//if (atsha_lock_data(handle, crc) != ATSHA_ERR_OK) return false;
 
 	return true;
 }
