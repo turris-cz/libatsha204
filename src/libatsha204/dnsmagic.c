@@ -42,7 +42,7 @@
 /*
  * Global variable with configuration and some initial config values.
  */
-atsha_configuration g_config;
+extern atsha_configuration g_config;
 
 /*
  * Get decimal number from its string representation
